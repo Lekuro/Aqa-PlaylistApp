@@ -21,4 +21,5 @@ screenshots/
 .vscode/
 .idea/
 .env
-.github/
+.github/agents
+.gitignore
