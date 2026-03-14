@@ -19,12 +19,11 @@ test.describe('Playlist App', () => {
     test.describe('Playlist App - Add Track Functionality', () => {
         test('Add Track Using "+" Button: adds track to playlist', async ({ page }) => {
             await page.goto('/');
-            const addButton = await page.locator('#tracklist>div button').first();
-            const trackTitle = await page.locator('#tracklist>div p').first().innerText();
-            await addButton.click();
+            const songIndex = Math.floor(Math.random() * amountOfTracks);
+            const trackData = await addTrackToPlaylist(page, songIndex);
             const playlistTracks = await page.locator('#playlist>div>div p').first();
             const titles = await playlistTracks.allInnerTexts();
-            expect(titles).toContain(await trackTitle);
+            expect(titles).toContain(trackData[0]);
         });
     });
     test.describe('Playlist App - Total Duration Calculation', () => {
