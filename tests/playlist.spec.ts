@@ -22,10 +22,8 @@ test.describe('Playlist App', () => {
             const addButton = await page.locator('#tracklist>div button').first();
             const trackTitle = await page.locator('#tracklist>div p').first().innerText();
             await addButton.click();
-            // Перевіряємо, що трек з'явився у плейлисті
             const playlistTracks = await page.locator('#playlist>div>div p').first();
             const titles = await playlistTracks.allInnerTexts();
-            console.log('here', titles, 'title', trackTitle);
             expect(titles).toContain(await trackTitle);
         });
     });
