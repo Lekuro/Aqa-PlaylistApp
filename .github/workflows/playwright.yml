@@ -10,6 +10,9 @@ jobs:
         runs-on: ubuntu-latest
         steps:
             - uses: actions/checkout@v4
+            - name: Create .env file
+              run: |
+                  echo "BASE_URL=https://vite-react-alpha-lemon.vercel.app/" > .env
             - uses: actions/setup-node@v4
               with:
                   node-version: lts/*
